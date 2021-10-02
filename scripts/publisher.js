@@ -6,12 +6,12 @@ async function main() {
     const argv = yargs
     .option('key', {
         alias: 'k',
-        description: 'Pass your private key to instantiate a new stream',
+        description: 'Pass your wallet private key to publish to the stream',
         type: 'string',
     })
-    .option('address', {
-        alias: 'a',
-        description: 'Pass your wallet address to generate a new stream',
+    .option('stream', {
+        alias: 's',
+        description: 'Pass your stream ID',
         type: 'string',
     })
     .help()
@@ -19,16 +19,15 @@ async function main() {
     .argv;
 
     if(argv.key == null) throw "Error: key missing";
-    if(argv.address == null) throw "Error: address missing";
+    if(argv.stream == null) throw "Error: stream ID missing";
 
-    const stream = `${argv.address}/news`;
     const client = new StreamrClient({
         auth: {
             privateKey: argv.key
         }
     });
 
-    await fetchAndPublish(client, stream);
+    await fetchAndPublish(client, argv.stream);
 }
 
 async function fetchAndPublish(client, stream) {
