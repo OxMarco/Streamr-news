@@ -21,27 +21,26 @@ async function main() {
     if(argv.key == null) throw "Error: key missing";
     if(argv.address == null) throw "Error: address missing";
 
+    const stream = `${argv.address}/news`;
     const client = new StreamrClient({
         auth: {
             privateKey: argv.key
         }
     });
 
-    await fetchAndPublish(client);
+    await fetchAndPublish(client, stream);
 }
 
-async function fetchAndPublish(client) {
+async function fetchAndPublish(client, stream) {
     const response = await axios({
-        method: 'post',
-        url: 'http://api.mediastack.com/v1/news?access_key=67ce12baef71abeff9f74cf9d81bd4be&limit=20&languages=en',
+        method: 'get',
+        url: 'http://api.mediastack.com/v1/news?access_key=67ce12baef71abeff9f74cf9d81bd4be&limit=1&languages=en',
         headers: {
             'Content-type': 'application/json',
         }
     });
 
-    console.log(response);
-    // "http://api.mediastack.com/v1/news?access_key=67ce12baef71abeff9f74cf9d81bd4be&limit=20&languages=en"
-
+    await client.publish(stream, response.data);
 }
 
 main()
