@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "axios": "^0.22.0",
+    "streamr-client": "^5.4.5"
+  },
+  "scripts": {
+    "create-stream": "node create-stream.js"
+  }
+}
