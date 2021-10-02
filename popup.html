@@ -12,143 +12,21 @@
       type="text/css"
     />
     <link rel="stylesheet" href="popup.css" />
-    <style>
-      html {
-        background: url("https://goo.gl/LIXuuW") no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 100%;
-      }
-
-      body {
-        width: 30rem;
-        height: 25rem;
-        margin: 0;
-        padding: 0;
-      }
-
-      h1 {
-        font-family: "Montserrat", sans-serif;
-        color: #fff;
-        margin: 50px;
-        text-align: center;
-        letter-spacing: 1px;
-      }
-
-      #modal {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-      }
-
-      #ticker {
-        margin: 0 auto 20px;
-        font-family: "Montserrat", sans-serif;
-        padding: 0;
-        position: absolute;
-        right: 0;
-        height: 100%;
-      }
-      #ticker-title {
-        background-color: #2c2f34;
-        padding: 20px;
-        border-radius: 0;
-      }
-      #brand {
-        color: #bcb09a;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: inline-block;
-        font-weight: bold;
-      }
-      #alert {
-        color: #bcb09a;
-        font-size: 10px;
-        text-align: right;
-        display: inline-block;
-        line-height: 20px;
-      }
-
-      #scroll {
-        height: 21rem;
-        overflow-y: auto;
-      }
-
-      article {
-        background-color: #fff;
-        padding: 20px;
-        cursor: pointer;
-        border-bottom: 1px solid lighten(#a4a4a4, 32%);
-      }
-      article:last-child {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-      }
-      #featured-story {
-        font-size: 0.75em;
-        color: #a4a4a4;
-        font-family: "Lato", sans-serif;
-      }
-      #featured-headline {
-        font-weight: bold;
-        font-size: 1.25em;
-        padding: 10px 0;
-      }
-      #featured-headline:hover {
-        color: lighten(#2c2f34, 5%);
-      }
-      #featured-preview {
-        color: #a4a4a4;
-        font-weight: light;
-        font-family: "Lato", sans-serif;
-        font-size: 0.75em;
-      }
-    </style>
+    <script src="popup.js"></script>
   </head>
   <body>
     <div id="modal">
+      <div id="url">
+        <h1 id="urlLabel">Enter your stream URL:</h1>
+        <input type="url" id="urlInput" />
+        <button type="submit" id="urlButton">Submit</button>
+      </div>
       <div id="ticker">
         <div id="ticker-title">
-          <div id="brand"><i class="fa fa-newspaper-o"></i> Ornare</div>
-          <div id="alert"><i class="fa fa-warning"></i> Mattis Tortor</div>
+          <div id="brand"><i class="fa fa-newspaper-o"></i>Latest News</div>
+          <div id="alert"><i class="fa fa-warning"></i>Source: CNN</div>
         </div>
-        <div id="scroll">
-          <article>
-            <div id="featured-story">2 hours ago</div>
-            <div id="featured-headline">
-              Integer posuere erat a ante venenatis dapibus posuere velit
-              aliquet.
-            </div>
-            <div id="featured-preview">
-              Cum sociis natoque penatibus et magnis dis parturient montes,
-              nascetur ridiculus mus. Maecenas faucibus mollis interdum.
-            </div>
-          </article>
-          <article>
-            <div id="featured-story">3 hours ago</div>
-            <div id="featured-headline">
-              Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio
-              dui.
-            </div>
-            <div id="featured-preview">
-              Donec id elit non mi porta gravida at eget metus. Cras mattis
-              consectetur purus sit amet fermentum.
-            </div>
-          </article>
-          <article>
-            <div id="featured-story">4 hours ago</div>
-            <div id="featured-headline">
-              Nulla vitae elit libero, a pharetra augue.
-            </div>
-            <div id="featured-preview">
-              Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit.
-            </div>
-          </article>
-        </div>
+        <div id="scroll"></div>
       </div>
     </div>
   </body>
