@@ -1,9 +1,14 @@
 {
+  "name": "streamr-news",
+  "license": "MIT",
+  "version": "1.0.0",
   "dependencies": {
     "axios": "^0.22.0",
-    "streamr-client": "^5.4.5"
+    "streamr-client": "^5.4.5",
+    "yargs": "^17.2.1"
   },
   "scripts": {
-    "create-stream": "node create-stream.js"
+    "create-stream": "node scripts/create-stream.js",
+    "publish-stream": "node scripts/publisher.js"
   }
 }
