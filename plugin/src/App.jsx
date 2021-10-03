@@ -9,7 +9,9 @@ import "./App.css";
 function App() {
   const [messages, setMessages] = useState([]);
   const [subscribed, setSubscribed] = useState(true);
-  const [stream, setStream] = useState("0xef0bEA6d239729Ed2E54ce41AFE7de129f01168c/news");
+  const [stream, setStream] = useState(
+    "0xef0bEA6d239729Ed2E54ce41AFE7de129f01168c/news"
+  );
   const DEBUG = true;
 
   useEffect(() => {
@@ -79,40 +81,42 @@ function App() {
           <div id="alert">Source: Mediastack</div>
         </div>
         <div id="scroll">
-          {messages.map((message) => {
-            return (
-              <article
-                style={message.image !== null ? { display: "flex" } : null}
-              >
-                {message.image !== null && (
-                  <img
-                    src={message.image}
-                    alt={message.image}
-                    id="featured-image"
-                  />
-                )}
-                {message.image !== null && (
-                  <div>
+          {messages.map((data) => {
+            return data.map((message) => {
+              return (
+                <article
+                  style={message.image !== null ? { display: "flex" } : null}
+                >
+                  {message.image !== null && (
+                    <img
+                      src={message.image}
+                      alt={message.image}
+                      id="featured-image"
+                    />
+                  )}
+                  {message.image !== null && (
+                    <div>
+                      <div id="featured-story">{message.published_at}</div>
+                      <div id="featured-headline" href={message.url}>
+                        {message.title}
+                      </div>
+                      <div id="featured-preview">{message.description}</div>
+                    </div>
+                  )}
+                  {message.image === null && (
                     <div id="featured-story">{message.published_at}</div>
+                  )}
+                  {message.image === null && (
                     <div id="featured-headline" href={message.url}>
                       {message.title}
                     </div>
+                  )}
+                  {message.image === null && (
                     <div id="featured-preview">{message.description}</div>
-                  </div>
-                )}
-                {message.image === null && (
-                  <div id="featured-story">{message.published_at}</div>
-                )}
-                {message.image === null && (
-                  <div id="featured-headline" href={message.url}>
-                    {message.title}
-                  </div>
-                )}
-                {message.image === null && (
-                  <div id="featured-preview">{message.description}</div>
-                )}
-              </article>
-            );
+                  )}
+                </article>
+              );
+            });
           })}
         </div>
       </div>
