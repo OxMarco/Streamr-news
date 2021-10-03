@@ -6,13 +6,15 @@ import "./App.css";
 // 0xef0bEA6d239729Ed2E54ce41AFE7de129f01168c/news
 // 0x2a4a1c956eca44dec0e2ae551898925ef7ad6656d5576e2ba030b9ac470bc068
 
-function App() {
+function App({ data }) {
   const [messages, setMessages] = useState([]);
   const [subscribed, setSubscribed] = useState(true);
   const [stream, setStream] = useState(
     "0xef0bEA6d239729Ed2E54ce41AFE7de129f01168c/news"
   );
   const DEBUG = true;
+
+  console.log(data);
 
   useEffect(() => {
     if (stream !== "") {
@@ -81,8 +83,8 @@ function App() {
           <div id="alert">Source: Mediastack</div>
         </div>
         <div id="scroll">
-          {messages.map((data) => {
-            return data.map((message) => {
+          {messages.map((messageObject) => {
+            return messageObject.data.map((message) => {
               return (
                 <article
                   style={message.image !== null ? { display: "flex" } : null}

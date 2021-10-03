@@ -10,8 +10,5 @@
   "icons": {
     "96": "favicon-96x96.png"
   },
-  "permissions": [
-    "activeTab", 
-    "storage"
-  ]
+  "permissions": ["activeTab", "storage"]
 }
