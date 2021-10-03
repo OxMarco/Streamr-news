@@ -8,13 +8,12 @@ import "./App.css";
 
 function App() {
   const [messages, setMessages] = useState([]);
-  const [subscribed, setSubscribed] = useState(false);
-  const [temp, setTemp] = useState("");
-  const [url, setUrl] = useState("");
+  const [subscribed, setSubscribed] = useState(true);
+  const [stream, setStream] = useState("0xef0bEA6d239729Ed2E54ce41AFE7de129f01168c/news");
   const DEBUG = true;
 
   useEffect(() => {
-    if (url !== "") {
+    if (stream !== "") {
       const subscribeToStream = async () => {
         const wallet = StreamrClient.generateEthereumAccount();
 
@@ -27,7 +26,7 @@ function App() {
 
         await client.subscribe(
           {
-            stream: "0x4f73Fc31F1c026F4A40b0e905a89f7E49CC0cCfD/news",
+            stream: stream,
           },
           (message, metadata) => {
             console.log("message received", message);
@@ -45,11 +44,7 @@ function App() {
       subscribeToStream();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
-
-  const handleSubmit = () => {
-    setUrl(temp);
-  };
+  }, [stream]);
 
   return (
     <div id="modal">
@@ -58,11 +53,8 @@ function App() {
         <input
           type="url"
           id="urlInput"
-          onChange={(e) => setTemp(e.target.value)}
+          onChange={(e) => setStream(e.target.value)}
         />
-        <button type="submit" id="urlButton" onClick={handleSubmit}>
-          Submit
-        </button>
       </div>
       <div id="ticker" style={subscribed ? { display: "initial" } : null}>
         <div id="ticker-title">
