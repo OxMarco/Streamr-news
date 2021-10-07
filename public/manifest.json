@@ -1,0 +1,17 @@
+{
+  "name": "Streamr News",
+  "description": "A fully-decentralised news ticker powered by Streamr",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Read the latest news"
+  },
+  "icons": {
+    "96": "favicon-96x96.png"
+  },
+  "permissions": [
+    "activeTab", 
+    "storage"
+  ]
+}
